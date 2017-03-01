@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三栏布局</title>
+	<style>
+	html,body{
+		box-sizing:content-box;
+		padding: 0;
+		margin:0;
+		height: 100%;
+	}
+	#wrap{
+		height: 460px;
+		padding:20px;
+		margin: 20px 20px;
+		background-color: #eee;
+		border: 1px solid #999;
+	}
+	#wrap:after{
+		display: block;
+		content: "/";
+		clear: both;
+		height: 0px;
+		visibility: hidden;
+	}
+	#left,#center,#right{
+		padding: 20px 20px 0 ;
+		background: #fff;
+	}
+	#left{
+		width: 160px;
+		position: absolute;
+		left: 40px;
+		top: 40px;
+		
+	}
+	#center{
+		margin-left: 220px;
+		margin-right: 140px;
+		height: 200px;
+	}
+	#right{
+		width: 80px;
+		position: absolute;
+		right: 40px;
+		top: 40px;
+	}
+	.card{
+		float: left;
+		width: 80px;
+		height: 80px;
+		margin-bottom: 20px;
+		text-align: center;
+		background-color: #eee;
+	}
+	</style>
+</head>
+<body>
+	 <div id="wrap">
+		<div id="left">
+			<div class="card">
+				<p>团队logo</p>
+				<p>80x80</p>
+			</div>
+		</div>
+		<div id="center">
+			<p>关于团队介绍</p>
+			<p>XXXXXXXXXXXXXXXXXXXXX</p>
+		</div>
+		<div id="right">
+			<div class="card">
+				<p>团队logo</p>
+				<p>80x80</p>
+			</div>
+			<div class="card">
+				<p>团队logo</p>
+				<p>80x80</p>
+			</div>
+			<div class="card">
+				<p>团队logo</p>
+				<p>80x80</p>
+			</div>
+			<div class="card">
+				<p>团队logo</p>
+				<p>80x80</p>
+			</div>
+		</div>
+	 </div>
+</body>
+</html>

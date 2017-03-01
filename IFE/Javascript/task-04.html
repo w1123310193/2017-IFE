@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 03</title>
+    <style>
+        #header{
+            margin: 15px auto;
+            width: 600px;
+            height: 50px;
+           /* border: 1px solid #ccc;*/
+        }
+        #contain{
+            margin:auto;
+            width: 1000px;
+            height: 80px;
+            padding: 10px;
+            border: 1px dashed #eee;
+        }
+        button{
+            width: 80px;
+        }
+        .ball{
+            float: left;
+            height: 80px;
+            width: 80px;
+            margin-left: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 80px;
+            border-radius:50%;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <input id="info" type="number">
+        <button id="lin">左侧进</button>
+        <button id="rin">右侧进</button>
+        <button id="lout">左侧出</button>
+        <button id="rout">右侧出</button>
+    </div>
+    <div id="contain"></div>
+
+    <script>
+        var lin = document.getElementById('lin');
+        var rin = document.getElementById('rin');
+        var lout = document.getElementById('lout');
+        var rout = document.getElementById('rout');
+        var contain = document.getElementById('contain');
+        var info = document.getElementById('info');
+        var balls = document.getElementsByClassName('ball');
+
+        lin.onclick = function(){
+            var val  = info.value;
+            if (checkValue(val)) {
+                insertBall(contain,val,1);
+                info.value = '';
+                info.focus(); 
+            }        
+
+        };
+        rin.onclick = function(){
+            var val  = info.value;
+            if (checkValue(val)) {
+                insertBall(contain,val,2); 
+                info.value = '';
+                info.focus(); 
+            }
+        };
+        lout.onclick = function(){   
+            removeBall(contain,1); 
+        };
+        rout.onclick = function(){
+             removeBall(contain,2); 
+        };
+        contain.onclick = function(e) {
+            var ev = ev || window.event;
+    　　　　var target = ev.target || ev.srcElement;
+    　　　　if (target.className == 'ball') {
+                    alert("移除元素："+target.innerText);
+                    contain.removeChild(target);
+    　　　　}
+        }
+
+        function insertBall(target,val,direction) {    //direction  1:left   2:right
+            var div = document.createElement("div");
+            div.className = 'ball';
+            div.innerText = val;
+            if (direction == 2) {
+                target.appendChild(div);
+            } else {
+                if (target.firstChild) {
+                    target.insertBefore(div,target.firstChild)
+                } else {
+                   target.appendChild(div); 
+                }
+            }  
+        }
+        function removeBall(target,direction) {    
+            if (target.lastChild && direction == 2) {
+                alert("移除元素："+target.lastChild.innerText);
+                target.removeChild(target.lastChild);              
+            } 
+            if(target.firstChild && direction ==1) {
+                alert("移除元素："+target.firstChild.innerText);
+                target.removeChild(target.firstChild);
+            }
+        }
+        function checkValue(val){
+            if (val == '') {
+                alert('输入数据为空，请重新输入.');
+                info.focus(); 
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+    </script>
+</body>
+</html>
